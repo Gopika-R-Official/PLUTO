@@ -1,0 +1,42 @@
+[
+  {
+    "id": "user-alex-rao-01",
+    "email": "alex@pluto.culture",
+    "name": "Alex Rao",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+    "bio": "Exploring cinema, sonic architectures, and cultural curiosities.",
+    "salt": "164790a755c3b3c4a9095e7e8600b1ca",
+    "passwordHash": "85d5ff68d5090edf6fc390bd93caf36f3cd59ef4e7aa062e88e517ea41e586401402816f6c8b27122e09df48bdc81161986e4caef91a5bfc8ed34dc56ff767da",
+    "createdAt": "2026-10-18T19:20:46.603Z"
+  },
+  {
+    "id": "user-1792351246698-acea3ad0",
+    "email": "curator.1792351246698@pluto.culture",
+    "name": "Elena Rostova",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+    "bio": "Member of Pluto Editorial & Cultural Hub.",
+    "salt": "873d760d12eb1487fe558339b13ce2c6",
+    "passwordHash": "ae8b84a5859a59f9e633c918e1ae36cc0f1c4ffc058f9a713129164a3dd037dee25172c2b90d2495796630faa2b9a7bf59366f5faa5620a652cb18859ed70276",
+    "createdAt": "2026-10-18T19:20:46.750Z"
+  },
+  {
+    "id": "user-1792414540576-6c929237",
+    "email": "curator.1792414540576@pluto.culture",
+    "name": "Elena Rostova",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+    "bio": "Member of Pluto Editorial & Cultural Hub.",
+    "salt": "0a08efebfabc4be73a41dc172a137cda",
+    "passwordHash": "f4d1aa5f1df19ac42263ec2610576a14e568207472d31f42f5ca8924d4d742a2c7334a5f87fd2a74b6fd598b0bf9cc04afb312a77472b515ec8c6f587a055b52",
+    "createdAt": "2026-10-19T12:55:40.660Z"
+  },
+  {
+    "id": "user-1792440637516-9569122c",
+    "email": "gopiprithi1008@gmail.com",
+    "name": "Gopika",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+    "bio": "Member of Pluto Editorial & Cultural Hub.",
+    "salt": "f4d16d3b2db93fd6d68fa869c20840e1",
+    "passwordHash": "9404a5ac7cdda1585cbb81d6e8a2e689fe6542a9e50b600f8739553cf62c8794c3bac41eeeb0d636b408549cd5287a5912fcb7ec23cd0bd4df39d5371de6bb6a",
+    "createdAt": "2026-10-19T20:10:37.575Z"
+  }
+]

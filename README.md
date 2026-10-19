@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pluto
 
-## Getting Started
+Pluto is a personalized content discovery web app: an editorial **Discover** feed, an optional **My Space** session for the current hour, and a local-demo **Together** room for sharing and voting.
 
-First, run the development server:
+> Your interests shape what you discover. Your moment shapes what you need. Your people shape what you experience together.
+
+## Requirements
+
+- Node.js 20+
+- npm 10+
+
+## Setup
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local`. Secrets stay on the server (Next.js Route Handlers). Do not put API keys in client components.
 
-## Learn More
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `TMDB_READ_ACCESS_TOKEN` | No | TMDB v4 bearer token for live movies, trending, and search |
+| `TMDB_API_KEY` | No | Alternative TMDB v3 key if you do not have a read token |
 
-To learn more about Next.js, take a look at the following resources:
+News uses public BBC RSS feeds and does not need a key. If those feeds are unreachable, Pluto falls back to labelled sample briefings.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Next.js development server |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | ESLint |
+| `npm test` | Vitest unit and integration tests |
+| `npm run test:e2e` | Playwright critical flows (install browsers with `npx playwright install chromium`) |
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Discover feed with mixed news, films, and sample social posts
+- Skippable interest onboarding and an explainable preference scorer
+- Favorites, dismiss, follow topic, and more/less topic signals (persisted in `localStorage`)
+- Debounced global search across news, movies, and sample posts
+- Trending from live providers when available
+- My Space: voluntary vibe, company, budget, and setting — does not rewrite core interests
+- Together: local groups, invite codes/links, shared cards, voting, planning room
+- Drag-and-drop feed module order with keyboard move up/down
+- Light and dark themes
+- Responsive sidebar + compact mobile navigation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture
+
+- **Next.js App Router** UI with Route Handlers in `src/app/api/*`
+- **Redux Toolkit** for preferences, favorites, theme, layout, My Space session, Together
+- **RTK Query** for `/api/news`, `/api/movies`, `/api/search`, `/api/trending`
+- Shared `ContentItem` model in `src/lib/types.ts`
+- Personalization in `src/lib/personalization.ts` (transparent weights, variety interleaving)
+
+## Content sources and mock limitations
+
+- **News (live):** BBC RSS, normalized on the server. Clearly falls back to sample briefings if feeds fail.
+- **Movies (live when configured):** TMDB via server routes. Without credentials, labelled sample titles are shown.
+- **Social:** typed mock feed only. Not claimed as Instagram/X/etc.
+- **My Space places/events:** sample recommendations, labelled as such. No verified local listings API is configured.
+- **Together:** localStorage demo. It does **not** sync across users or devices. Extra participants are sample profiles. There is no synchronized streaming playback.
+
+## Personalization notes
+
+Signals are weighted and capped so one click cannot take over the feed. Mood selections in My Space are session filters only. Reset personalization and feed order from Settings.
+
+## Git
+
+`.env.local` and other secret env files are gitignored. Commit `.env.example` only.
