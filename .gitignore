@@ -32,12 +32,18 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files
+# env files (all environment configurations)
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+*.env*
+.env.example
+
+# agents & internal documentation
+.agents/
+AUDIT_REPORT.md
+
+# local dynamic user data
+src/lib/server/users.json
 
 # vercel
 .vercel
